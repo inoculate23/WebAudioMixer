@@ -15,7 +15,7 @@ input[type="file"] {
 }
 
 .customFileUploader {
-	background-color: #3a3a3a;
+	background-color: #7090ba;
 	display: inline-block;
 	padding: 12px 12px;
 	cursor: pointer;
@@ -31,13 +31,13 @@ input[type="file"] {
 }
 
 body {
-	background: ##;
+	background: #0000000;
 }
 
 h1 {
 	font-family: 'Josefin Sans', sans-serif;
 
-	color: #dedede;
+	color: #ffffff;
 	margin-left: 30px;
 	padding-top: 6px;
 	font-size: 24px;
@@ -46,7 +46,7 @@ h1 {
 #container {
 	margin: auto;
 	width: 860px;
-	background-color: #5c5e5e;
+	background-color: #000000;
 	padding-bottom: 30px;
 }
 
