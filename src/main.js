@@ -20,7 +20,7 @@ let drawParams =
 // Semantic variables
 let channelOne = 1;
 let channelTwo = 2;
-let sound1  =  "media/Abstraction - Three Red Hearts - Pixel War 2.wav";
+let sound1  =  "https://inoculate.media/WebAudioMixer/media/Les_Barons|The_Barons-Cold_Heart copy.mp3";
 
 
 function init()
