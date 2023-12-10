@@ -16,8 +16,8 @@ let audioData1;
 let audioData2;
 let audioData3;
 let audioData4;
-let filePathChannelOne = "C:\\\\fakepath\Les Barons|The Barons - Cold Heart.mp3 ";
-let filePathChannelTwo = "C:\\\\fakepath\Abstraction - Three Red Hearts - Pixel War 2.wav";
+let filePathChannelOne = "C:\\\\fakepath\Les Barons|The Barons - Cold Heart.mp3";
+let filePathChannelTwo = "C:\\\\fakepath\Les Barons|The Barons - Rub A Dub.mp3";
 
 function setupCanvas(canvasElement)
 {
