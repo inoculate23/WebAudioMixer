@@ -14,7 +14,7 @@ input[type="file"] {
 	display: none;
 }
 main {
-	background-color="#000000";
+	background-color="#00000";
 }
 .customFileUploader {
 	background-color: #7090ba;
@@ -33,7 +33,7 @@ main {
 }
 
 body {
-	background: #0000000;
+	background: #00f000;
 }
 
 h1 {
@@ -122,3 +122,4 @@ button[data-playing="yes"]:after {
 button[data-playing="no"]:after {
   	content: "Play";
 }
+setup(pos, top = null, right = null, bottom = null, left = null)
