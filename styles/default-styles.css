@@ -13,7 +13,9 @@
 input[type="file"] {
 	display: none;
 }
-
+main {
+	background-color="#000000";
+}
 .customFileUploader {
 	background-color: #7090ba;
 	display: inline-block;
