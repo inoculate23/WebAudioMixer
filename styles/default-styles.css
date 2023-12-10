@@ -7,7 +7,7 @@
 #digitalLabel {
 	font-family: 'Josefin Sans', sans-serif;
 
-	color: #778c74;
+	color: #2f3030;
 }
 
 input[type="file"] {
@@ -21,23 +21,23 @@ input[type="file"] {
 	cursor: pointer;
 	font-family: 'Josefin Sans', sans-serif;
 
-	color: #778c74;
+	color:#1b1c1c;
 	font-size: 1.2rem;
   	width: 6rem;
-	border-top: 2px solid #767676;
-	border-left: 2px solid #767676;
-	border-bottom: 2px solid #212121;
-	border-right: 2px solid #212121;
+	border-top: 2px solid ##1b1c1c;
+	border-left: 2px solid ##1b1c1c;
+	border-bottom: 2px solid ##1b1c1c;
+	border-right: 2px solid ##1b1c1c;
 }
 
 body {
-	background: #6a6a6a;
+	background: ##;
 }
 
 h1 {
 	font-family: 'Josefin Sans', sans-serif;
 
-	color: #778c74;
+	color: #dedede;
 	margin-left: 30px;
 	padding-top: 6px;
 	font-size: 24px;
@@ -46,7 +46,7 @@ h1 {
 #container {
 	margin: auto;
 	width: 860px;
-	background-color: #3a3a3a;
+	background-color: #5c5e5e;
 	padding-bottom: 30px;
 }
 
@@ -54,14 +54,14 @@ canvas {
 	margin-left: 30px;
 	margin-bottom: 1rem;
 	margin-top: -6px;
-	background: #fafafa;
+	background: #000000;
 }
 
 #filters {
 	text-align: center;
 	font-family: 'Josefin Sans', sans-serif;
 
-	color: #778c74;
+	color: #5c5e5e;
 }
 
 #channelOne, #channelTwo {
