@@ -1,10 +1,12 @@
 #analogLabel {
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Josefin Sans', sans-serif;
+
 	color: #778c74;
 }
 
 #digitalLabel {
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Josefin Sans', sans-serif;
+
 	color: #778c74;
 }
 
@@ -17,7 +19,8 @@ input[type="file"] {
 	display: inline-block;
 	padding: 12px 12px;
 	cursor: pointer;
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Josefin Sans', sans-serif;
+
 	color: #778c74;
 	font-size: 1.2rem;
   	width: 6rem;
@@ -32,7 +35,8 @@ body {
 }
 
 h1 {
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Josefin Sans', sans-serif;
+
 	color: #778c74;
 	margin-left: 30px;
 	padding-top: 6px;
@@ -55,7 +59,8 @@ canvas {
 
 #filters {
 	text-align: center;
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Josefin Sans', sans-serif;
+
 	color: #778c74;
 }
 
