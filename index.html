@@ -13,6 +13,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 	<!--Load external java modules-->
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script type="module" src="./src/wavesurfer.js"></script>
 	<script src="./src/loader.js" type="module">
 	
 		// Chrome autoplay fix
@@ -140,6 +144,24 @@
 
 			</div><!-- channelTwo -->
 		</div><!-- controls -->
+		   <div id="waveform"></div>
+
+        <p>
+            <label>
+            <input type="checkbox" checked="${loop}" />
+            Loop regions
+          </label>
+
+            <label style="margin-left: 2em">
+            Zoom: <input type="range" min="10" max="1000" value="10" />
+          </label>
+        </p>
+
+    </main>
+    <script src="./src/sketch.js"></script>
+</body>
+
+</html>
 	</div><!-- container -->
 	
 </main>
