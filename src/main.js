@@ -19,8 +19,8 @@ let drawParams = {
 // Semantic variables
 let channelOne = 1;
 let channelTwo = 2;
-let sound1 = "./media/Les_Barons|The_Barons-Cold_Heart.mp3";
-
+let sound2 = "media/The_Barons-Pikes Peak5-edit.mp3";
+let sound1 = "media/01-The_Barons-Cold_Heart.mp3";
 
 function init() {
     audio.setupWebaudio(sound1);
