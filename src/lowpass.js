@@ -12,7 +12,7 @@ playButtonTwo.addEventListener('click', function () {
 stopAudioButton.addEventListener('click', function () {
   getAudioContext().suspend();
 });
-
+let files = document.querySelectorAll('audio');
 let soundFile1 = (files[0]);
 let soundFile2 = (files[1]);
 let fft;
