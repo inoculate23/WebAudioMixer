@@ -1,5 +1,3 @@
-p5.sound.js-example-filter-bandpassconsole.log('p5.sound.js v' + p5sound.VERSION);
-console.log('please report issues at https://github.com/processing/p5.sound.js');
 
 // expected behavior:
 // white noise is filtered with a
