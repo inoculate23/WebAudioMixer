@@ -54,7 +54,7 @@ h1 {
 	margin-left: -2;;
 	margin-bottom: 1rem;
 	margin-top: -6px;
-	background: #000000;
+	background: #73bfeb;
 	border-width:6px;
 	border-color:#575959;
 	border-radius: 15px;
@@ -113,11 +113,7 @@ h1 {
 	float: right;
 }
 
-#gainSliderOne, #highSliderOne, #midSliderOne, #lowSliderOne,
-#gainSliderTwo, #highSliderTwo, #midSliderTwo, #lowSliderTwo {
-	width: 60px;
-	height: 10px;
-}
+
 
 #volumeSliderOne, #volumeSliderTwo {
 	transform: rotateZ(270deg);
