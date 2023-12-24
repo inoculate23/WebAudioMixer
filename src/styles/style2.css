@@ -20,7 +20,6 @@ html, body {
 
 
 #main {
-	background-image: url("https://github.com/inoculate23/WebAudioMixer/blob/master/color_tile.jpeg?raw=true");
 
 }
 
@@ -52,13 +51,15 @@ h1 {
 	width:95%;
 	height:145px;
 }
-#pfive {
+.p5Canvas {
 	width:95%;
+	height:400px;
 	margin-left: -2;;
 	margin-bottom: 1rem;
 	margin-top: -6px;
-	
+	z-index: 10;
 	border-width:6px;
+	position:absolute;
 	border-color:#575959;
 	border-radius: 15px;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
