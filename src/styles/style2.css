@@ -48,13 +48,16 @@ h1 {
     border-radius: 25px;
     color:#ffffff;
 }
-
 #canvas {
+	width:95%;
+	height:145px;
+}
+#pfive {
 	width:95%;
 	margin-left: -2;;
 	margin-bottom: 1rem;
 	margin-top: -6px;
-	background: #73bfeb;
+	
 	border-width:6px;
 	border-color:#575959;
 	border-radius: 15px;
