@@ -25,8 +25,8 @@ let bandPassFilter, bandPassFilterFreq, bandPassFilterWidth;
 
 
   function setup() {
-    var myCanvas = createCanvas(710, 256);
-   myCanvas.id(pfive)
+    createCanvas(710, 256)
+  // myCanvas.id(pfive)
   fill(255, 40, 255);
 
   bandPassFilter = new BandPass();
