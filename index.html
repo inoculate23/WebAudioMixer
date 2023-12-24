@@ -30,11 +30,11 @@
 };</script>
 </head>
 <body>
-<main>
+<main id="main">
 	
 	<div id="container">
 		<h1>Web Audio Mixer</h1>
-		
+		<center>
 		<!--Audio visualization-->
 		<canvas id="canvas" width="800" height="400"></canvas>
 
@@ -46,7 +46,7 @@
 		  <span><input type="checkbox" class="toggle toggle-lg" checked id="invertCB"><label for="invertCB">Invert Colors</label></span>
 		  <span><input type="checkbox" class="toggle toggle-lg" checked id="embossCB"><label for="embossCB">Show Emboss</label></span>
 		</section><br>
-
+	
 		<div id="controls">
 		
 <!--	**********  CHANNEL ONE  **********		-->	
@@ -87,13 +87,14 @@
 
 
 <!--	**********  MIXER  Panel  **********		-->
-						
+
 			<div id="mixer">
-				<center> <img class="img" src="https://inoculate.media/assets/digimix.png" width="325px" /><br></center>
-				<center><img class="img" src="https://inoculate.media/assets/haawke_wh.png" width="175px" /></center><br>
+			 <img class="img" src="https://inoculate.media/assets/digimix.png" width="325px" /><br>
+				<img class="img" src="https://inoculate.media/assets/haawke_wh.png" width="175px" /><br>
 
-
+			
 				<section id="cross">
+						
 					<label title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching." id="analogLabel">Graduated Cross Fader</label><br><br>
   					<label id="analogLabel" title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">Linear</label>
   					<input type="radio" name="graduated" id="linear" value=0 checked="checked" title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">
@@ -114,9 +115,11 @@
 							<span>|</span>
 							<span>|</span>
 						  </div>
+						
 				</section>
+			
 			</div><!-- mixer -->
-
+			
 						
 <!--	**********  CHANNEL TWO  **********		-->
 		
@@ -154,13 +157,13 @@
 
 			</div><!-- channelTwo -->
 		</div>
-		
+	
     
   <div id="tuner">
-    <video id="app" src="https://demo.ovenplayer.com/#%7B%22playerOption%22%3A%7B%22autoStart%22%3Atrue%2C%22autoFallback%22%3Atrue%2C%22mute%22%3Afalse%2C%22sources%22%3A%5B%7B%22type%22%3A%22webrtc%22%2C%22file%22%3A%22wss%3A%2F%2Fdemo.ovenplayer.com%3A3333%2Fapp%2Ftest-input-stream%3Ftransport%3Dtcp%22%7D%5D%2C%22doubleTapToSeek%22%3Afalse%2C%22webrtcConfig%22%3A%7B%22timeoutMaxRetry%22%3A4%2C%22connectionTimeout%22%3A10000%7D%2C%22hlsConfig%22%3A%7B%22liveSyncDuration%22%3A1.5%2C%22liveMaxLatencyDuration%22%3A3%2C%22maxLiveSyncPlaybackRate%22%3A1.5%7D%7D%2C%22demoOption%22%3A%7B%22autoReload%22%3Atrue%2C%22autoReloadInterval%22%3A2000%7D%7D" autoplay mute controls height="500px" width="850px"></video>
+    <video id="app" src="https://demo.ovenplayer.com/#%7B%22playerOption%22%3A%7B%22autoStart%22%3Atrue%2C%22autoFallback%22%3Atrue%2C%22mute%22%3Afalse%2C%22sources%22%3A%5B%7B%22type%22%3A%22webrtc%22%2C%22file%22%3A%22wss%3A%2F%2Fdemo.ovenplayer.com%3A3333%2Fapp%2Ftest-input-stream%3Ftransport%3Dtcp%22%7D%5D%2C%22doubleTapToSeek%22%3Afalse%2C%22webrtcConfig%22%3A%7B%22timeoutMaxRetry%22%3A4%2C%22connectionTimeout%22%3A10000%7D%2C%22hlsConfig%22%3A%7B%22liveSyncDuration%22%3A1.5%2C%22liveMaxLatencyDuration%22%3A3%2C%22maxLiveSyncPlaybackRate%22%3A1.5%7D%7D%2C%22demoOption%22%3A%7B%22autoReload%22%3Atrue%2C%22autoReloadInterval%22%3A2000%7D%7D" autoplay mute controls height="500px" width="950px"></video>
 </div>
     </main>
-
+</center>
 
 
 
