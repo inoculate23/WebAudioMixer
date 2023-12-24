@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,8 @@
 	
 	<!--Load external font (google font)-->
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
-	<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script> -->
-		<script src="https://cdn.jsdelivr.net/gh/processing/p5.sound.js/lib/p5.sound.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="src/styles/tuner.css" />
 	<!--Load external style sheet-->
@@ -37,10 +37,8 @@
 		<h1>Web Audio Mixer</h1>
 		<center>
 		<!--Audio visualization-->
-		<button id="startAudioButton">startAudioFilters</button>
-		<button id="stopAudioButton">stopAudioFilters</button>
-		
-<canvas id="mycanvas"></canvas>
+		<canvas id="canvas" width="800" height="400"></canvas>
+
 		<section id="filters">
 		  <span><input type="checkbox" class="toggle toggle-lg" id="gradientCB" checked><label for="gradientCB">Show Gradient</label></span>
 		  <span><input type="checkbox" class="toggle toggle-lg" checked id="barsCB" checked><label for="barsCB">Show Bars</label></span>
@@ -63,23 +61,23 @@
 				
 				<section id="gain">
 					<label title="Adjusts the audio input volume prior to equalization." id="analogLabel">Gain :</label>
-					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderOne" min="0" max="2" value="1" step="0.01" class="range range-sm" >
+					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderOne" min="0" max="2" value="1" step="0.01">
 				</section><br>
 				
 				<section id="eq">
 					<label title="Adjusts the amplification of high frequency audio. ( >1280 hz )" id="analogLabel">High :</label>
-					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )"type="range" id="highSliderOne" min="-20" max="20" value="0" step="1" class="range range-xs"><br>
+					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )"type="range" id="highSliderOne" min="-20" max="20" value="0" step="1"><br>
 					
 					<label title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" id="analogLabel">Mid- :</label>
-					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range"  min="-20" max="20" value="0" step="1" class="range range-xs" id="midSliderOne"><br>
+					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range" id="midSliderOne" min="-20" max="20" value="0" step="1"><br>
 					
 					<label title="Adjusts the amplification of low frequency audio. ( <160 hz )" id="analogLabel">Low- :</label>
-					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" min="-20" max="20" value="0" step="1" class="range range-xs" id="lowSliderOne" ><br>
+					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" id="lowSliderOne" min="-20" max="20" value="0" step="1"><br>
 				</section><br>
 				
 				<section id="volume">
 					<label title="Adjusts audio volume after equalization." id="analogLabel">Volume<br></label>
-					<input title="Adjusts audio volume after equalization." type="range" id="volumeSliderOne" min="0" max="1" value="0.9" step="0.01"   class="range range-sm" /> >
+					<input title="Adjusts audio volume after equalization." type="range" id="volumeSliderOne" min="0" max="1" value="0.9" step="0.01">
 				</section>
 
 				<section id="buttons">
@@ -109,7 +107,7 @@
   					<input type="radio" name="hamster" id="inverted" value=1 title="Inverts the poles on the crossfader switching which side is associated with which channel. Often used for scratching.">
   					<label id="analogLabel" title="Inverts the poles on the crossfader switch"></label>
 					<label id="analogLabel" title="Used to blend the two audio channels.">Cross Fader</label><br>
-					<input type="range"  min="0" max="100" value="50"  class="range range-xs" />
+					<input type="range" min="0" max="100" value="50" class="range" step="5" />
 					<div class="w-full flex justify-between text-xs px-2">
 						<div class="w-full flex justify-between text-xs px-2">
 							<span>|</span>
@@ -135,18 +133,18 @@
 				
 				<section id="gain">
 					<label title="Adjusts the audio input volume prior to equalization." id="analogLabel">Gain :</label>
-					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderTwo" min="0" max="2" value="1" step="0.01"  class="range range-sm" /> >
+					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderTwo" min="0" max="2" value="1" step="0.01">
 				</section><br>
 
 				<section id="eq">
 					<label title="Adjusts the amplification of high frequency audio. ( >1280 hz )" id="analogLabel">High :</label>
-					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )"type="range" id="highSliderTwo" min="-20" max="20" value="0" step="1" class="range range-xs"><br>
+					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )" type="range" id="highSliderTwo" min="-20" max="20" value="0" step="1"><br>
 					
 					<label title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" id="analogLabel">Mid- :</label>
-					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range"  min="-20" max="20" value="0" step="1" class="range range-xs" id="midSliderTwo"><br>
+					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range" id="midSliderTwo" min="-20" max="20" value="0" step="1"><br>
 					
 					<label title="Adjusts the amplification of low frequency audio. ( <160 hz )" id="analogLabel">Low- :</label>
-					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" min="-20" max="20" value="0" step="1" class="range range-xs" id="lowSliderTwo" ><br>
+					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" id="lowSliderTwo" min="-20" max="20" value="0" step="1"><br>
 				</section><br>
 				
 				<section id="volume">
@@ -167,7 +165,7 @@
 </div>
     </main>
 </center>
-<script src="src/bandpass.js"></script>
+
 
 
 </body>
