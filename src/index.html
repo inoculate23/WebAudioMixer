@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Audio Mixer</title>
+	
+	<!--Load external font (google font)-->
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+	<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/gh/processing/p5.sound.js/lib/p5.sound.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/styles/tuner.css" />
+	<!--Load external style sheet-->
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+	<link href="src/styles/style2.css" type="text/css" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+	<!--Load external java modules-->
+	<script src="./src/loader.js" type="module">
+	
+		// Chrome autoplay fix
+		// https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+		document.querySelector("audio").onplay = (e) => {
+  		if (audioCtx.state == "suspended") {
+    	audioCtx.resume();
+  }
+};</script>
+</head>
+<body>
+<main id="main">
+	
+	<div id="container">
+		<h1>Web Audio Mixer</h1>
+		<center>
+		<!--Audio visualization-->
+		<button class="btn btn-success" id="startAudioButton">startAudioFilters</button>
+		<button class="btn btn-warning" id="stopAudioButton">stopAudioFilters</button>
+		
+<canvas id="mycanvas"></canvas>
+		<section id="filters">
+		  <span><input type="checkbox" class="toggle toggle-lg" id="gradientCB" checked><label for="gradientCB">Show Gradient</label></span>
+		  <span><input type="checkbox" class="toggle toggle-lg" checked id="barsCB" checked><label for="barsCB">Show Bars</label></span>
+		  <span><input type="checkbox" class="toggle toggle-lg" checked id="circlesCB" checked><label for="circlesCB">Show Circles</label></span>
+		  <span><input type="checkbox" class="toggle toggle-lg" checked id="noiseCB"><label for="noiseCB">Show Noise</label></span>
+		  <span><input type="checkbox" class="toggle toggle-lg" checked id="invertCB"><label for="invertCB">Invert Colors</label></span>
+		  <span><input type="checkbox" class="toggle toggle-lg" checked id="embossCB"><label for="embossCB">Show Emboss</label></span>
+		</section><br>
+	
+		<div id="controls">
+		
+<!--	**********  CHANNEL ONE  **********		-->	
+		
+			<div id="channelOne">
+					
+				<label title="Click to browse and select an audio file to load into Web Audio Mixer." for="uploadOne" class="customFileUploader">Load Track</label>
+				<input type="file" class="file-input file-input-bordered file-input-lg w-full max-w-xs" id="uploadOne" accept="audio/*"><br><br><br>
+				
+				<label id="analogLabel">Channel 1</label><br><br>
+				
+				<section id="gain">
+					<label title="Adjusts the audio input volume prior to equalization." id="analogLabel">Gain :</label>
+					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderOne" min="0" max="2" value="1" step="0.01" class="range range-sm" >
+				</section><br>
+				
+				<section id="eq">
+					<label title="Adjusts the amplification of high frequency audio. ( >1280 hz )" id="analogLabel">High :</label>
+					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )"type="range" id="highSliderOne" min="-20" max="20" value="0" step="1" class="range range-xs"><br>
+					
+					<label title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" id="analogLabel">Mid- :</label>
+					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range"  min="-20" max="20" value="0" step="1" class="range range-xs" id="midSliderOne"><br>
+					
+					<label title="Adjusts the amplification of low frequency audio. ( <160 hz )" id="analogLabel">Low- :</label>
+					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" min="-20" max="20" value="0" step="1" class="range range-xs" id="lowSliderOne" ><br>
+				</section><br>
+				
+				<section id="volume">
+					<label title="Adjusts audio volume after equalization." id="analogLabel">Volume<br></label>
+					<input title="Adjusts audio volume after equalization." type="range" id="volumeSliderOne" min="0" max="1" value="0.9" step="0.01"   class="range range-sm" /> >
+				</section>
+
+				<section id="buttons">
+					<button id="playButtonOne" class="customFileUploader" data-playing="no"></button>
+				</section>
+
+			</div><!-- channelOne -->
+
+
+<!--	**********  MIXER  Panel  **********		-->
+
+			<div id="mixer">
+			 <img class="img" src="https://inoculate.media/assets/digimix.png" width="325px" /><br>
+				<img class="img" src="https://inoculate.media/assets/haawke_wh.png" width="175px" /><br>
+
+			
+				<section id="cross">
+						
+					<label title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching." id="analogLabel">Graduated Cross Fader</label><br><br>
+  					<label id="analogLabel" title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">Linear</label>
+  					<input type="radio" name="graduated" id="linear" value=0 checked="checked" title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">
+  					<input type="radio" name="graduated" id="exponential" value=1 title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">
+  					<label id="analogLabel" title="Select the rate at which the crossfader blends the two audio channels. Linear is smooth, squared is an exponential rate of change often used for scratching.">Square</label><br><br><br>
+					<label id="analogLabel" title="Inverts the poles on the crossfader switching which side is associated with which channel. Often used for scratching.">Hamster Switch</label><br><br>
+  					<label id="analogLabel" title="Inverts the poles on the crossfader switching which side is associated with which channel. Often used for scratching.">1&lt;-&gt;2</label>
+  					<input type="radio" name="hamster" id="regular" value=0 checked="checked" title="Inverts the poles on the crossfader switching which side is associated with which channel. Often used for scratching.">
+  					<input type="radio" name="hamster" id="inverted" value=1 title="Inverts the poles on the crossfader switching which side is associated with which channel. Often used for scratching.">
+  					<label id="analogLabel" title="Inverts the poles on the crossfader switch"></label>
+					<label id="analogLabel" title="Used to blend the two audio channels.">Cross Fader</label><br>
+					<input type="range"  min="0" max="100" value="50"  class="range range-xs" />
+					<div class="w-full flex justify-between text-xs px-2">
+						<div class="w-full flex justify-between text-xs px-2">
+							<span>|</span>
+							<span>|</span>
+							<span>|</span>
+							<span>|</span>
+							<span>|</span>
+						  </div>
+						
+				</section>
+			
+			</div><!-- mixer -->
+			
+						
+<!--	**********  CHANNEL TWO  **********		-->
+		
+			<div id="channelTwo">
+			
+				<label title="Click to browse and select an audio file to load into Web Audio Mixer." for="uploadTwo" class="customFileUploader">Load Track</label>
+				<input type="file" class="file-input file-input-bordered file-input-lg w-full max-w-xs" id="uploadTwo" accept="audio/*"><br><br><br>
+				
+				<label id="analogLabel">Channel 2</label><br><br>
+				
+				<section id="gain">
+					<label title="Adjusts the audio input volume prior to equalization." id="analogLabel">Gain :</label>
+					<input title="Adjusts the audio input volume prior to equalization." type="range" id="gainSliderTwo" min="0" max="2" value="1" step="0.01"  class="range range-sm" /> >
+				</section><br>
+
+				<section id="eq">
+					<label title="Adjusts the amplification of high frequency audio. ( >1280 hz )" id="analogLabel">High :</label>
+					<input title="Adjusts the amplification of high frequency audio. ( >1280 hz )"type="range" id="highSliderTwo" min="-20" max="20" value="0" step="1" class="range range-xs"><br>
+					
+					<label title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" id="analogLabel">Mid- :</label>
+					<input title="Adjusts the amplification of mid range frequency audio. ( peak at 720 hz )" type="range"  min="-20" max="20" value="0" step="1" class="range range-xs" id="midSliderTwo"><br>
+					
+					<label title="Adjusts the amplification of low frequency audio. ( <160 hz )" id="analogLabel">Low- :</label>
+					<input title="Adjusts the amplification of low frequency audio. ( <160 hz )" type="range" min="-20" max="20" value="0" step="1" class="range range-xs" id="lowSliderTwo" ><br>
+				</section><br>
+				
+				<section id="volume">
+					<label title="Adjusts audio volume after equalization." id="analogLabel">Volume<br></label>
+					<input title="Adjusts audio volume after equalization." type="range" id="volumeSliderTwo" min="0" max="1" value="0.9" step="0.01">
+				</section>
+
+				<section id="buttons">
+					<button id="playButtonTwo" class="customFileUploader" data-playing="no"></button>
+				</section>
+
+			</div><!-- channelTwo -->
+		</div>
+	
+    
+  <div id="tuner">
+    <video id="app" src="https://demo.ovenplayer.com/#%7B%22playerOption%22%3A%7B%22autoStart%22%3Atrue%2C%22autoFallback%22%3Atrue%2C%22mute%22%3Afalse%2C%22sources%22%3A%5B%7B%22type%22%3A%22webrtc%22%2C%22file%22%3A%22wss%3A%2F%2Fdemo.ovenplayer.com%3A3333%2Fapp%2Ftest-input-stream%3Ftransport%3Dtcp%22%7D%5D%2C%22doubleTapToSeek%22%3Afalse%2C%22webrtcConfig%22%3A%7B%22timeoutMaxRetry%22%3A4%2C%22connectionTimeout%22%3A10000%7D%2C%22hlsConfig%22%3A%7B%22liveSyncDuration%22%3A1.5%2C%22liveMaxLatencyDuration%22%3A3%2C%22maxLiveSyncPlaybackRate%22%3A1.5%7D%7D%2C%22demoOption%22%3A%7B%22autoReload%22%3Atrue%2C%22autoReloadInterval%22%3A2000%7D%7D" autoplay mute controls height="500px" width="950px"></video>
+</div>
+    </main>
+</center>
+<script src="src/bandpass.js"></script>
+<script src="src/lowpass.js"></script>
+
+</body>
+</html>
